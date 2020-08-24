@@ -25,18 +25,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 // import EventService from "@/services/EventService.js";
 
 export default {
   props: ["id"],
-//   data() {
-//     return {
-//       event: {}
-//     };
-//   },
+  //   data() {
+  //     return {
+  //       event: {}
+  //     };
+  //   },
   created() {
-    this.$store.dispatch("fetchEvent", this.id);
+    this.$store.dispatch("event/fetchEvent", this.id);
     // EventService.getEvent(this.id) // <--- Send the prop id to our EventService
     //   .then(response => {
     //     this.event = response.data;
@@ -45,7 +45,9 @@ export default {
     //     console.log("There was an error:", error.response);
     //   });
   },
-  computed: mapState(["event"])
+  computed: mapState({
+    event: state => state.event.event
+  })
 };
 </script>
 
